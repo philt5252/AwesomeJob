@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factories\IDeviceViewFactory.cs" />
     <Compile Include="Factories\IScreenLayoutWindowFactory.cs" />
     <Compile Include="Factories\IMainWindowFactory.cs" />
     <Compile Include="IViewWithDataContext.cs" />

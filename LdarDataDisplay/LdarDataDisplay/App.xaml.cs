@@ -6,8 +6,10 @@ using System.Linq;
 using System.Windows;
 using Autofac;
 using LdarDataDisplay.Core.Autofac;
+using LdarDataDisplay.Core.DataAccess.Autofac;
 using LdarDataDisplay.Core.Views.Autofac;
 using LdarDataDisplay.Foundation.Controllers;
+using Olf.Prism.Autofac;
 
 namespace LdarDataDisplay
 {
@@ -23,7 +25,9 @@ namespace LdarDataDisplay
             ContainerBuilder builder = new ContainerBuilder();
 
             builder.RegisterModule<CoreModule>();
+            builder.RegisterModule<DataAccessModule>();
             builder.RegisterModule<ViewsModule>();
+            builder.RegisterModule<PrismModule>();
 
             IContainer container = builder.Build();
 

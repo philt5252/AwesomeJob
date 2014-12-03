@@ -13,6 +13,8 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,7 +37,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Autofac">
-      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+      <HintPath>..\packages\Autofac.3.4.0\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Olf.Prism.Autofac">
+      <HintPath>..\..\..\..\Olf.Prism.Autofac.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -79,6 +84,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -91,6 +97,10 @@
       <Project>{C2AF09B5-4B36-4CD4-831A-755D310D3A73}</Project>
       <Name>LdarDataDisplay.Core.Autofac</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LdarDataDisplay.Core.DataAccess.Autofac\LdarDataDisplay.Core.DataAccess.Autofac.csproj">
+      <Project>{FB080467-FAD7-4A00-B6AB-313FA18FFBF4}</Project>
+      <Name>LdarDataDisplay.Core.DataAccess.Autofac</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LdarDataDisplay.Core.Views.Autofac\LdarDataDisplay.Core.Views.Autofac.csproj">
       <Project>{E7D844A5-FCA2-40EE-8B36-FCF6F060A467}</Project>
       <Name>LdarDataDisplay.Core.Views.Autofac</Name>
@@ -101,6 +111,7 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
