@@ -11,10 +11,10 @@ using LdarDataDisplay.Core.Autofac;
 using LdarDataDisplay.Core.DataAccess.Autofac;
 using LdarDataDisplay.Core.Views.Autofac;
 using LdarDataDisplay.Foundation.Controllers;
+using LdarDataDisplay.Prism.Autofac;
 using Microsoft.Practices.Prism.Regions;
 using Microsoft.Practices.Prism.Regions.Behaviors;
 using Microsoft.Practices.ServiceLocation;
-using Olf.Prism.Autofac;
 
 namespace LdarDataDisplay
 {
@@ -36,14 +36,20 @@ namespace LdarDataDisplay
             builder.RegisterModule<ViewsModule>();
             builder.RegisterModule<PrismModule>();
 
-            container = builder.Build();
+            builder.RegisterType<AutofacServiceLocator>().As<IServiceLocator>().SingleInstance();
 
-            ConfigureDefaultRegionBehaviors();
-            ConfigureRegionAdapterMappings();
+            container = builder.Build();
 
             IServiceLocator serviceLocator = container.Resolve<IServiceLocator>();
 
             ServiceLocator.SetLocatorProvider(() => serviceLocator);
+
+            container.RegisterAllFuncsAsOwned();
+
+            ConfigureDefaultRegionBehaviors();
+            ConfigureRegionAdapterMappings();
+
+           
 
             IAppController appController;
 

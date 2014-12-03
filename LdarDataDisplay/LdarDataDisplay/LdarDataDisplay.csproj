@@ -84,6 +84,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutofacHelperExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -125,6 +126,10 @@
     <ProjectReference Include="..\LdarDataDisplay.Foundation\LdarDataDisplay.Foundation.csproj">
       <Project>{46063691-2FC2-4F6F-948D-AC705590EACB}</Project>
       <Name>LdarDataDisplay.Foundation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LdarDataDisplay.Prism.Autofac\LdarDataDisplay.Prism.Autofac.csproj">
+      <Project>{64ADB9F7-9E1E-4C81-A90C-7880B8C11A85}</Project>
+      <Name>LdarDataDisplay.Prism.Autofac</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
