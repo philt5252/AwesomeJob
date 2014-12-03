@@ -12,6 +12,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LdarDataDisplay.Foundation.Views;
+using Microsoft.Practices.Prism.Regions;
+using Microsoft.Practices.ServiceLocation;
 
 namespace LdarDataDisplay.Core.Views
 {
@@ -20,8 +22,13 @@ namespace LdarDataDisplay.Core.Views
     /// </summary>
     public partial class MainWindow : Window, IWindow
     {
+        private IRegionManager regionManager;
         public MainWindow()
         {
+            regionManager = ServiceLocator.Current.GetInstance<IRegionManager>();
+            RegionManager.SetRegionManager(this, regionManager);
+            
+
             InitializeComponent();
         }
 

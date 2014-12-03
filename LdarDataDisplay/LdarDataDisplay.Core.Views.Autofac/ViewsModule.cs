@@ -12,9 +12,11 @@ namespace LdarDataDisplay.Core.Views.Autofac
 
             builder.RegisterType<MainWindowFactory>().As<IMainWindowFactory>().SingleInstance();
             builder.RegisterType<ScreenLayoutWindowFactory>().As<IScreenLayoutWindowFactory>().SingleInstance();
+            builder.RegisterType<DeviceViewFactory>().As<IDeviceViewFactory>().SingleInstance();
 
             builder.RegisterType<MainWindow>().AsSelf();
             builder.RegisterType<ScreenLayoutWindow>().AsSelf();
+            builder.RegisterType<DeviceView>().AsSelf();
         }
     }
 }

@@ -9,6 +9,7 @@ using LdarDataDisplay.Core.Autofac;
 using LdarDataDisplay.Core.DataAccess.Autofac;
 using LdarDataDisplay.Core.Views.Autofac;
 using LdarDataDisplay.Foundation.Controllers;
+using Microsoft.Practices.ServiceLocation;
 using Olf.Prism.Autofac;
 
 namespace LdarDataDisplay
@@ -30,6 +31,10 @@ namespace LdarDataDisplay
             builder.RegisterModule<PrismModule>();
 
             IContainer container = builder.Build();
+
+            IServiceLocator serviceLocator = container.Resolve<IServiceLocator>();
+
+            ServiceLocator.SetLocatorProvider(() => serviceLocator);
 
             IAppController appController;
 
