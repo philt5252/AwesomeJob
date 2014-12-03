@@ -1,0 +1,92 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LdarDataDisplay", "LdarDataDisplay\LdarDataDisplay.csproj", "{BC66994D-322C-4A4E-A176-3C7F04F4E4D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LdarDataDisplay.Core", "LdarDataDisplay.Core\LdarDataDisplay.Core.csproj", "{A36D4137-8EC5-43D0-9193-A91845D93F8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LdarDataDisplay.Core.Views", "LdarDataDisplay.Core.Views\LdarDataDisplay.Core.Views.csproj", "{E1D240D9-4F6F-4EEA-B78B-7915878233C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LdarDataDisplay.Core.DataAccess", "LdarDataDisplay.Core.DataAccess\LdarDataDisplay.Core.DataAccess.csproj", "{54CB4F1D-01DA-4655-87CA-4286DA4F1EAD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{D1B8CD5D-E678-45FC-B3F2-D20B0CA5AE42}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Foundation", "Foundation", "{D9051FD1-2A1A-4ECB-B321-5B2793EEF692}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Autofac", "Autofac", "{0FCC8DCA-4546-4EA2-8E77-CC4706F1554E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LdarDataDisplay.Foundation", "LdarDataDisplay.Foundation\LdarDataDisplay.Foundation.csproj", "{46063691-2FC2-4F6F-948D-AC705590EACB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LdarDataDisplay.Foundation.Views", "LdarDataDisplay.Foundation.Views\LdarDataDisplay.Foundation.Views.csproj", "{D0BB129A-C40D-4E88-A68B-2F15443F586C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LdarDataDisplay.Foundation.DataAccess", "LdarDataDisplay.Foundation.DataAccess\LdarDataDisplay.Foundation.DataAccess.csproj", "{1C5D5BF9-E5F4-4103-A790-8FDE1C45EDE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LdarDataDisplay.Core.Autofac", "LdarDataDisplay.Core.Autofac\LdarDataDisplay.Core.Autofac.csproj", "{C2AF09B5-4B36-4CD4-831A-755D310D3A73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LdarDataDisplay.Core.Views.Autofac", "LdarDataDisplay.Core.Views.Autofac\LdarDataDisplay.Core.Views.Autofac.csproj", "{E7D844A5-FCA2-40EE-8B36-FCF6F060A467}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LdarDataDisplay.Core.DataAccess.Autofac", "LdarDataDisplay.Core.DataAccess.Autofac\LdarDataDisplay.Core.DataAccess.Autofac.csproj", "{FB080467-FAD7-4A00-B6AB-313FA18FFBF4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BC66994D-322C-4A4E-A176-3C7F04F4E4D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC66994D-322C-4A4E-A176-3C7F04F4E4D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC66994D-322C-4A4E-A176-3C7F04F4E4D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC66994D-322C-4A4E-A176-3C7F04F4E4D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A36D4137-8EC5-43D0-9193-A91845D93F8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A36D4137-8EC5-43D0-9193-A91845D93F8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A36D4137-8EC5-43D0-9193-A91845D93F8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A36D4137-8EC5-43D0-9193-A91845D93F8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1D240D9-4F6F-4EEA-B78B-7915878233C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1D240D9-4F6F-4EEA-B78B-7915878233C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1D240D9-4F6F-4EEA-B78B-7915878233C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1D240D9-4F6F-4EEA-B78B-7915878233C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54CB4F1D-01DA-4655-87CA-4286DA4F1EAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54CB4F1D-01DA-4655-87CA-4286DA4F1EAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54CB4F1D-01DA-4655-87CA-4286DA4F1EAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54CB4F1D-01DA-4655-87CA-4286DA4F1EAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46063691-2FC2-4F6F-948D-AC705590EACB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46063691-2FC2-4F6F-948D-AC705590EACB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46063691-2FC2-4F6F-948D-AC705590EACB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46063691-2FC2-4F6F-948D-AC705590EACB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0BB129A-C40D-4E88-A68B-2F15443F586C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0BB129A-C40D-4E88-A68B-2F15443F586C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0BB129A-C40D-4E88-A68B-2F15443F586C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0BB129A-C40D-4E88-A68B-2F15443F586C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C5D5BF9-E5F4-4103-A790-8FDE1C45EDE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C5D5BF9-E5F4-4103-A790-8FDE1C45EDE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C5D5BF9-E5F4-4103-A790-8FDE1C45EDE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C5D5BF9-E5F4-4103-A790-8FDE1C45EDE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2AF09B5-4B36-4CD4-831A-755D310D3A73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2AF09B5-4B36-4CD4-831A-755D310D3A73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2AF09B5-4B36-4CD4-831A-755D310D3A73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2AF09B5-4B36-4CD4-831A-755D310D3A73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7D844A5-FCA2-40EE-8B36-FCF6F060A467}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7D844A5-FCA2-40EE-8B36-FCF6F060A467}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7D844A5-FCA2-40EE-8B36-FCF6F060A467}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7D844A5-FCA2-40EE-8B36-FCF6F060A467}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB080467-FAD7-4A00-B6AB-313FA18FFBF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB080467-FAD7-4A00-B6AB-313FA18FFBF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB080467-FAD7-4A00-B6AB-313FA18FFBF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB080467-FAD7-4A00-B6AB-313FA18FFBF4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E1D240D9-4F6F-4EEA-B78B-7915878233C2} = {D1B8CD5D-E678-45FC-B3F2-D20B0CA5AE42}
+		{54CB4F1D-01DA-4655-87CA-4286DA4F1EAD} = {D1B8CD5D-E678-45FC-B3F2-D20B0CA5AE42}
+		{A36D4137-8EC5-43D0-9193-A91845D93F8C} = {D1B8CD5D-E678-45FC-B3F2-D20B0CA5AE42}
+		{0FCC8DCA-4546-4EA2-8E77-CC4706F1554E} = {D1B8CD5D-E678-45FC-B3F2-D20B0CA5AE42}
+		{46063691-2FC2-4F6F-948D-AC705590EACB} = {D9051FD1-2A1A-4ECB-B321-5B2793EEF692}
+		{D0BB129A-C40D-4E88-A68B-2F15443F586C} = {D9051FD1-2A1A-4ECB-B321-5B2793EEF692}
+		{1C5D5BF9-E5F4-4103-A790-8FDE1C45EDE7} = {D9051FD1-2A1A-4ECB-B321-5B2793EEF692}
+		{C2AF09B5-4B36-4CD4-831A-755D310D3A73} = {0FCC8DCA-4546-4EA2-8E77-CC4706F1554E}
+		{E7D844A5-FCA2-40EE-8B36-FCF6F060A467} = {0FCC8DCA-4546-4EA2-8E77-CC4706F1554E}
+		{FB080467-FAD7-4A00-B6AB-313FA18FFBF4} = {0FCC8DCA-4546-4EA2-8E77-CC4706F1554E}
+	EndGlobalSection
+EndGlobal
