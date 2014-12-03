@@ -39,6 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factories\IScreenLayoutWindowFactory.cs" />
+    <Compile Include="Factories\IMainWindowFactory.cs" />
+    <Compile Include="IViewWithDataContext.cs" />
+    <Compile Include="IWindow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

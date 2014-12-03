@@ -39,7 +39,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LdarDeviceRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LdarDataDisplay.Core\LdarDataDisplay.Core.csproj">
+      <Project>{A36D4137-8EC5-43D0-9193-A91845D93F8C}</Project>
+      <Name>LdarDataDisplay.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LdarDataDisplay.Foundation.DataAccess\LdarDataDisplay.Foundation.DataAccess.csproj">
+      <Project>{1C5D5BF9-E5F4-4103-A790-8FDE1C45EDE7}</Project>
+      <Name>LdarDataDisplay.Foundation.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LdarDataDisplay.Foundation\LdarDataDisplay.Foundation.csproj">
+      <Project>{46063691-2FC2-4F6F-948D-AC705590EACB}</Project>
+      <Name>LdarDataDisplay.Foundation</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

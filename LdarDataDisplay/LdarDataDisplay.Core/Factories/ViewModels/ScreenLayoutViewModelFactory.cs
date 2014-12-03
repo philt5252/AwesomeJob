@@ -1,0 +1,21 @@
+﻿using System;
+using LdarDataDisplay.Foundation.Factories.ViewModels;
+using LdarDataDisplay.Foundation.ViewModels;
+
+namespace LdarDataDisplay.Core.Factories.ViewModels
+{
+    public class ScreenLayoutViewModelFactory : IScreenLayoutViewModelFactory
+    {
+        private readonly Func<IScreenLayoutViewModel> createViewModelFunc;
+
+        public ScreenLayoutViewModelFactory(Func<IScreenLayoutViewModel> createViewModelFunc )
+        {
+            this.createViewModelFunc = createViewModelFunc;
+        }
+
+        public IScreenLayoutViewModel Create()
+        {
+            return createViewModelFunc();
+        }
+    }
+}

@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,7 +42,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccessModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LdarDataDisplay.Core.DataAccess\LdarDataDisplay.Core.DataAccess.csproj">
+      <Project>{54CB4F1D-01DA-4655-87CA-4286DA4F1EAD}</Project>
+      <Name>LdarDataDisplay.Core.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LdarDataDisplay.Foundation.DataAccess\LdarDataDisplay.Foundation.DataAccess.csproj">
+      <Project>{1C5D5BF9-E5F4-4103-A790-8FDE1C45EDE7}</Project>
+      <Name>LdarDataDisplay.Foundation.DataAccess</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

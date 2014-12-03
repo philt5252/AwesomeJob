@@ -11,17 +11,25 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LdarDataDisplay.Foundation.Views;
 
-namespace LdarDataDisplay
+namespace LdarDataDisplay.Core.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, IWindow
     {
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void MenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            WindowStyle= WindowStyle.None;
+            WindowState=WindowState.Maximized;
+            mainMenu.Visibility=Visibility.Hidden;
         }
     }
 }

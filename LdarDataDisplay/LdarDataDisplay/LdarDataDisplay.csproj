@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -53,16 +56,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -84,11 +79,26 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LdarDataDisplay.Core.Autofac\LdarDataDisplay.Core.Autofac.csproj">
+      <Project>{C2AF09B5-4B36-4CD4-831A-755D310D3A73}</Project>
+      <Name>LdarDataDisplay.Core.Autofac</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LdarDataDisplay.Core.Views.Autofac\LdarDataDisplay.Core.Views.Autofac.csproj">
+      <Project>{E7D844A5-FCA2-40EE-8B36-FCF6F060A467}</Project>
+      <Name>LdarDataDisplay.Core.Views.Autofac</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LdarDataDisplay.Foundation\LdarDataDisplay.Foundation.csproj">
+      <Project>{46063691-2FC2-4F6F-948D-AC705590EACB}</Project>
+      <Name>LdarDataDisplay.Foundation</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
