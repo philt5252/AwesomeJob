@@ -6,21 +6,32 @@
              xmlns:regions="http://www.codeplex.com/CompositeWPF"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <Menu Name="mainMenu" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="22">
+    <Window.Resources>
+        <LinearGradientBrush x:Key="BackgroundBrush">
+            <GradientStop Color="White"></GradientStop>
+        </LinearGradientBrush>
+    </Window.Resources>
+    <Grid Background="{StaticResource BackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Menu Name="mainMenu" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="25">
             <MenuItem Header="Configuration">
                 <MenuItem Header="Screen Layout" Command="{Binding ShowScreenLayoutCommand}"></MenuItem>
                 <MenuItem Header="Device Details"></MenuItem>
             </MenuItem>
             <MenuItem Header="Full Screen" Click="MenuItem_OnClick"></MenuItem>
         </Menu>
-        <ItemsControl regions:RegionManager.RegionName="DeviceRegion" Margin="0,22,0,0">
+        <Viewbox Grid.Row="1" Stretch="Uniform">
+        <ItemsControl regions:RegionManager.RegionName="DeviceRegion" Margin="5,0,5,0">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid  Rows="1" />
+                    <UniformGrid Rows="1" />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
         </ItemsControl>
+        </Viewbox>
 
     </Grid>
 </Window>

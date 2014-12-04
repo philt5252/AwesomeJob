@@ -3,17 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" >
+             mc:Ignorable="d" HorizontalAlignment="Stretch"
+          VerticalAlignment="Stretch" 	HorizontalContentAlignment="Stretch"
+	VerticalContentAlignment="Stretch"
+    Height="700"
+    Width="auto"
+            >
     <UserControl.Resources>
         <LinearGradientBrush x:Key="HeaderBrush">
-            <GradientStop Color="#E55B5B5B"></GradientStop>
+            <GradientStop Color="#E58B8B8B"></GradientStop>
         </LinearGradientBrush>
         <LinearGradientBrush x:Key="RowBrush">
             <GradientStop Color="#4C5B5B5B"></GradientStop>
         </LinearGradientBrush>
+
+        <ObjectDataProvider 
+            ObjectInstance="{x:Type Colors}" 
+            MethodName="GetProperties" 
+            x:Key="colorPropertiesOdp" />
+
+        <BooleanToVisibilityConverter x:Key="b2v" />
     </UserControl.Resources>
-    <Viewbox Stretch="Uniform">
-        <Border BorderBrush="Black" BorderThickness="2" CornerRadius="4,4,4,4">
+    <Border BorderBrush="{StaticResource RowBrush}" BorderThickness="0,0,5,5" CornerRadius="4,4,4,4">
+        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="4,4,4,4">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="70"></RowDefinition>
@@ -25,26 +37,70 @@
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Row="0" Grid.ColumnSpan="2" Background="{StaticResource HeaderBrush}">
                     <Label  HorizontalAlignment="Center" VerticalAlignment="Center" 
-               Content="Device 1" FontSize="32" FontWeight="DemiBold"  ></Label>
+               Content="{Binding Id}" FontSize="32" FontWeight="DemiBold" ></Label>
+                    <!--<ComboBox Name="comboBox1" Background="{StaticResource HeaderBrush}" 
+                            ItemsSource="{Binding Source={StaticResource colorPropertiesOdp}}"
+                            DisplayMemberPath="Name"
+                            SelectedValuePath="Name" Margin="189,0,1,40" SelectionChanged="comboBox1_SelectionChanged" >
+                       
+                        <ComboBox.Template>
+                            <ControlTemplate>
+                                <Ellipse x:Name="DropDownButton" Height="Auto" Width="30" Fill="White" MouseDown="DropDownButton_OnMouseDown">
+                                    
+                                </Ellipse>
+                            </ControlTemplate>
+                        </ComboBox.Template>
+                    </ComboBox>-->
+
+                </Grid>
+                <Grid  Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2" >
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsFlameout}" Value="false">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+                    <Label Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                            Content="Flameout" FontSize="32" FontWeight="DemiBold" >
+
+                    </Label>
                 </Grid>
                 <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Stretch" >
+
                     <StackPanel.Resources>
+                        <Style TargetType="StackPanel">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsFlameout}" Value="True">
+                                    <Setter Property="Visibility" Value="Hidden"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
                         <Style TargetType="{x:Type Label}">
                             <Setter Property="Margin" Value="0,15,0,0" />
                             <Setter Property="FontSize" Value="15"></Setter>
                             <Setter Property="FontWeight" Value="DemiBold"></Setter>
                         </Style>
                     </StackPanel.Resources>
-                        <Label Width="Auto" Content="Last Update:   " Background="{StaticResource RowBrush}"></Label>
-                        <Label Content="LPH2:          "></Label>
-                        <Label Content="Detector Temp: " Background="{StaticResource RowBrush}"></Label>
-                        <Label Content="Voltage:       " ></Label>
-                        <Label Content="H2 Pressure: " Background="{StaticResource RowBrush}"></Label>
-                        <Label Content="PPM: " ></Label>
-                        <Label Content="Pump PPL: " Background="{StaticResource RowBrush}"></Label>
+                    <Label Width="Auto" Content="Last Update: " Background="{StaticResource RowBrush}"></Label>
+                    <Label Content="LPH2: "></Label>
+                    <Label Content="Detector Temp: " Background="{StaticResource RowBrush}"></Label>
+                    <Label Content="Voltage: " ></Label>
+                    <Label Content="H2 Pressure: " Background="{StaticResource RowBrush}"></Label>
+                    <Label Content="PPM: " ></Label>
+                    <Label Content="Pump PPL: " Background="{StaticResource RowBrush}"></Label>
                 </StackPanel>
                 <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Stretch" >
                     <StackPanel.Resources>
+                        <Style TargetType="StackPanel">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsFlameout}" Value="True">
+                                    <Setter Property="Visibility" Value="Hidden"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
                         <Style TargetType="{x:Type Label}">
                             <Setter Property="Margin" Value="0,15,0,0" />
                             <Setter Property="FontSize" Value="15"></Setter>
@@ -52,10 +108,10 @@
                         </Style>
                     </StackPanel.Resources>
 
-                    <Label Content="56.78.9" Background="{StaticResource RowBrush}"></Label>
-                    <Label Content="54345" ></Label>
-                    <Label Content="654" Background="{StaticResource RowBrush}"></Label>
-                    <Label Content="324" ></Label>
+                    <Label Content="{Binding TimeSinceLastUpdate}" Background="{StaticResource RowBrush}"></Label>
+                    <Label Content="{Binding LPH2}" ></Label>
+                    <Label Content="{Binding DetectorTemp}" Background="{StaticResource RowBrush}"></Label>
+                    <Label Content="{Binding Voltage}" ></Label>
                     <Label Content="{Binding H2Pressure}" Background="{StaticResource RowBrush}"></Label>
                     <Label Content="{Binding PPM}"></Label>
                     <Label Content="{Binding PumpPPL}" Background="{StaticResource RowBrush}" ></Label>
@@ -63,5 +119,5 @@
 
             </Grid>
         </Border>
-    </Viewbox>
+    </Border>
 </UserControl>

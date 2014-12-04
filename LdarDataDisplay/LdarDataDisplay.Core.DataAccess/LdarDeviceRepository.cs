@@ -124,8 +124,8 @@ namespace LdarDataDisplay.Core.DataAccess
             double q;
             double r;
 
-            ldarDeviceData.IsFlameout =
-                !double.TryParse(dataEntries[Index('Q')], out q) ||
+            ldarDeviceData.IsFlameout = 
+            !double.TryParse(dataEntries[Index('Q')], out q) ||
                 !double.TryParse(dataEntries[Index('R')], out r);
 
         }
