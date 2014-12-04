@@ -8,15 +8,22 @@
 	VerticalContentAlignment="Stretch"
     Height="700"
     Width="auto"
-            >
+           >
     <UserControl.Resources>
         <LinearGradientBrush x:Key="HeaderBrush">
-            <GradientStop Color="#E58B8B8B"></GradientStop>
+            <GradientStop Color="#E5000000"></GradientStop>
         </LinearGradientBrush>
         <LinearGradientBrush x:Key="RowBrush">
-            <GradientStop Color="#4C5B5B5B"></GradientStop>
+            <GradientStop Color="#4CBFBFBF"></GradientStop>
         </LinearGradientBrush>
 
+        <SolidColorBrush x:Key="LPH2Brush" Color="{Binding LPH2Color}"></SolidColorBrush>
+        <SolidColorBrush x:Key="DetectorTempBrush" Color="{Binding DetectorTempColor}"></SolidColorBrush>
+        <SolidColorBrush x:Key="VoltageBrush" Color="{Binding VoltageColor}"></SolidColorBrush>
+        <SolidColorBrush x:Key="H2PressureBrush" Color="{Binding H2PresureColor}"></SolidColorBrush>
+        <SolidColorBrush x:Key="PPMBrush" Color="{Binding PPMColor}"></SolidColorBrush>
+        <SolidColorBrush x:Key="PumpPPLBrush" Color="{Binding PumpPPLColor}"></SolidColorBrush>
+      
         <ObjectDataProvider 
             ObjectInstance="{x:Type Colors}" 
             MethodName="GetProperties" 
@@ -26,7 +33,7 @@
     </UserControl.Resources>
     <Border BorderBrush="{StaticResource RowBrush}" BorderThickness="0,0,5,5" CornerRadius="4,4,4,4">
         <Border BorderBrush="Black" BorderThickness="1" CornerRadius="4,4,4,4">
-            <Grid>
+            <Grid Background="Gray">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="70"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
@@ -37,20 +44,8 @@
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Row="0" Grid.ColumnSpan="2" Background="{StaticResource HeaderBrush}">
                     <Label  HorizontalAlignment="Center" VerticalAlignment="Center" 
-               Content="{Binding Id}" FontSize="40" FontWeight="DemiBold" ></Label>
-                    <!--<ComboBox Name="comboBox1" Background="{StaticResource HeaderBrush}" 
-                            ItemsSource="{Binding Source={StaticResource colorPropertiesOdp}}"
-                            DisplayMemberPath="Name"
-                            SelectedValuePath="Name" Margin="189,0,1,40" SelectionChanged="comboBox1_SelectionChanged" >
-                       
-                        <ComboBox.Template>
-                            <ControlTemplate>
-                                <Ellipse x:Name="DropDownButton" Height="Auto" Width="30" Fill="White" MouseDown="DropDownButton_OnMouseDown">
-                                    
-                                </Ellipse>
-                            </ControlTemplate>
-                        </ComboBox.Template>
-                    </ComboBox>-->
+               Content="{Binding Id}" FontSize="40" Foreground="White" FontWeight="DemiBold" ></Label>
+           
 
                 </Grid>
                 <Grid  Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2" >
@@ -92,6 +87,8 @@
                     <Label Content="H2 Pressure: " Background="{StaticResource RowBrush}"></Label>
                     <Label Content="PPM: " ></Label>
                     <Label Content="Pump PPL: " Background="{StaticResource RowBrush}"></Label>
+                    <Label Content="Calibration Age: &#10;  " ></Label>
+                    <Label Content="Last Drift: &#10; " Background="{StaticResource RowBrush}"></Label>
                 </StackPanel>
                 <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Stretch" >
                     <StackPanel.Resources>
@@ -109,13 +106,15 @@
                         </Style>
                     </StackPanel.Resources>
 
-                    <Label  Content="{Binding TimeSinceLastUpdate}" Background="{StaticResource RowBrush}"></Label>
-                    <Label Content="{Binding LPH2}" ></Label>
-                    <Label Content="{Binding DetectorTemp}" Background="{StaticResource RowBrush}"></Label>
-                    <Label Content="{Binding Voltage}" ></Label>
-                    <Label Content="{Binding H2Pressure}" Background="{StaticResource RowBrush}"></Label>
-                    <Label Content="{Binding PPM}"></Label>
-                    <Label Content="{Binding PumpPPL}" Background="{StaticResource RowBrush}" ></Label>
+                    <Label Content="{Binding TimeSinceLastUpdate}" Background="{StaticResource RowBrush}"></Label>
+                    <Label Content="{Binding LPH2}" Foreground="{StaticResource LPH2Brush}" ></Label>
+                    <Label Content="{Binding DetectorTemp}" Background="{StaticResource RowBrush}" Foreground="{StaticResource DetectorTempBrush}"></Label>
+                    <Label Content="{Binding Voltage}" Foreground="{StaticResource VoltageBrush}"></Label>
+                    <Label Content="{Binding H2Pressure}" Background="{StaticResource RowBrush}" Foreground="{StaticResource H2PressureBrush}"></Label>
+                    <Label Content="{Binding PPM}" Foreground="{StaticResource PPMBrush}"></Label>
+                    <Label Content="{Binding PumpPPL}" Background="{StaticResource RowBrush}" Foreground="{StaticResource PumpPPLBrush}" ></Label>
+                    <Label Content="{Binding CalibrationAge}"></Label>
+                    <Label Content="{Binding LastDrift}" Background="{StaticResource RowBrush}"></Label>
                 </StackPanel>
 
             </Grid>
