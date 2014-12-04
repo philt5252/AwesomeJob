@@ -58,14 +58,26 @@ namespace LdarDataDisplay.Core.ViewModels
             get { return deviceData.PumpPPL; }
         }
 
-        public DateTime CalibrationAge
+        public string CalibrationAge
         {
-            get { return deviceData.CalibrationAge; }
+            get
+            {
+                StringBuilder builder = new StringBuilder();
+                builder.AppendLine(deviceData.CalibrationAge.ToShortDateString());
+                builder.Append(deviceData.CalibrationAge.ToShortTimeString());
+                return builder.ToString();
+            }
         }
 
-        public DateTime LastDrift
+        public string LastDrift
         {
-            get { return deviceData.LastDrift; }
+            get
+            {
+                StringBuilder builder = new StringBuilder();
+                builder.AppendLine(deviceData.LastDrift.ToShortDateString());
+                builder.Append(deviceData.LastDrift.ToShortTimeString());
+                return builder.ToString();
+            }
         }
 
         public bool IsFlameout
