@@ -24,6 +24,7 @@ namespace LdarDataDisplay.Core.Controllers
         private readonly IScreenLayoutViewModelFactory screenLayoutViewModelFactory;
         private readonly IDeviceViewModelFactory deviceViewModelFactory;
         private readonly ILdarDeviceRepository ldarDeviceRepository;
+        private readonly IConfigurationRepository configurationRepository;
         private readonly IDataRetrieverService dataRetrieverService;
         private readonly IRegionManager regionManager;
 
@@ -34,6 +35,7 @@ namespace LdarDataDisplay.Core.Controllers
             IScreenLayoutViewModelFactory screenLayoutViewModelFactory,
             IDeviceViewModelFactory deviceViewModelFactory,
             ILdarDeviceRepository ldarDeviceRepository,
+            IConfigurationRepository configurationRepository,
             IDataRetrieverService dataRetrieverService,
             IRegionManager regionManager)
         {
@@ -44,6 +46,7 @@ namespace LdarDataDisplay.Core.Controllers
             this.screenLayoutViewModelFactory = screenLayoutViewModelFactory;
             this.deviceViewModelFactory = deviceViewModelFactory;
             this.ldarDeviceRepository = ldarDeviceRepository;
+            this.configurationRepository = configurationRepository;
             this.dataRetrieverService = dataRetrieverService;
             this.regionManager = regionManager;
         }
@@ -84,26 +87,33 @@ namespace LdarDataDisplay.Core.Controllers
                 return deviceView;
             }).ToArray();
 
-            foreach (var view in regionManager.Regions["DeviceRegion"].Views)
+            foreach (var view in regionManager.Regions[RegionNames.DeviceRegion].Views)
             {
-                regionManager.Regions["DeviceRegion"].Remove(view);
+                regionManager.Regions[RegionNames.DeviceRegion].Remove(view);
             }
 
             foreach (var deviceView in deviceViews)
             {
-                regionManager.Regions["DeviceRegion"].Add(deviceView);
-                regionManager.Regions["DeviceRegion"].Activate(deviceView);
+                regionManager.Regions[RegionNames.DeviceRegion].Add(deviceView);
+                regionManager.Regions[RegionNames.DeviceRegion].Activate(deviceView);
             }
         }
 
         public void ShowScreenLaout()
         {
-            IScreenLayoutViewModel screenLayoutViewModel = screenLayoutViewModelFactory.Create();
+            Dictionary<string, DeviceDataConfiguration> deviceDataConfigurations = configurationRepository.Open();
+
+            IScreenLayoutViewModel screenLayoutViewModel = screenLayoutViewModelFactory.Create(deviceDataConfigurations);
             IWindow configurationWindow = screenLayoutWindowFactory.Create();
 
             configurationWindow.DataContext = screenLayoutViewModel;
 
             configurationWindow.Show();
+        }
+
+        public void SaveAndCloseConfiguration()
+        {
+            throw new NotImplementedException();
         }
     }
 }

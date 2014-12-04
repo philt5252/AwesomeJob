@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using LdarDataDisplay.Foundation.Factories.ViewModels;
+using LdarDataDisplay.Foundation.Models;
 using LdarDataDisplay.Foundation.ViewModels;
 
 namespace LdarDataDisplay.Core.Factories.ViewModels
@@ -13,7 +15,7 @@ namespace LdarDataDisplay.Core.Factories.ViewModels
             this.createViewModelFunc = createViewModelFunc;
         }
 
-        public IScreenLayoutViewModel Create()
+        public IScreenLayoutViewModel Create(Dictionary<string, DeviceDataConfiguration> deviceDataConfigurations)
         {
             return createViewModelFunc();
         }

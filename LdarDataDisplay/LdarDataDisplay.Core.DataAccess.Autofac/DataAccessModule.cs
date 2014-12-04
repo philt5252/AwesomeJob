@@ -10,7 +10,7 @@ namespace LdarDataDisplay.Core.DataAccess.Autofac
             base.Load(builder);
 
             builder.RegisterType<LdarDeviceRepository>().As<ILdarDeviceRepository>().SingleInstance();
-
+            builder.RegisterType<ConfigurationRepository>().As<IConfigurationRepository>().SingleInstance();
 
         }
     }
