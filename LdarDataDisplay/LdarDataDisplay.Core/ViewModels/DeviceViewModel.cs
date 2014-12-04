@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Windows.Media;
 using LdarDataDisplay.Foundation.Models;
 using LdarDataDisplay.Foundation.ViewModels;
@@ -16,9 +17,15 @@ namespace LdarDataDisplay.Core.ViewModels
             get { return deviceData.Id; }
         }
 
-        public DateTime TimeSinceLastUpdate
+        public string TimeSinceLastUpdate
         {
-            get { return deviceData.TimeSinceLastUpdate; }
+            get
+            {
+                StringBuilder builder = new StringBuilder();
+                builder.AppendLine(deviceData.TimeSinceLastUpdate.ToShortDateString());
+                builder.Append(deviceData.TimeSinceLastUpdate.ToShortTimeString());
+                return builder.ToString();
+            }
         }
 
         public double LPH2

@@ -30,7 +30,17 @@ namespace LdarDataDisplay.Core.Views
             regionManager = ServiceLocator.Current.GetInstance<IRegionManager>();
             RegionManager.SetRegionManager(this, regionManager);
             
+            this.KeyUp += OnKeyUp;
+
             InitializeComponent();
+        }
+
+        private void OnKeyUp(object sender, KeyEventArgs keyEventArgs)
+        {
+            if (keyEventArgs.Key == Key.Escape || keyEventArgs.Key == Key.F12)
+            {
+                
+            }
         }
 
         private void MenuItem_OnClick(object sender, RoutedEventArgs e)

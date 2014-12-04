@@ -37,7 +37,7 @@
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Row="0" Grid.ColumnSpan="2" Background="{StaticResource HeaderBrush}">
                     <Label  HorizontalAlignment="Center" VerticalAlignment="Center" 
-               Content="{Binding Id}" FontSize="32" FontWeight="DemiBold" ></Label>
+               Content="{Binding Id}" FontSize="40" FontWeight="DemiBold" ></Label>
                     <!--<ComboBox Name="comboBox1" Background="{StaticResource HeaderBrush}" 
                             ItemsSource="{Binding Source={StaticResource colorPropertiesOdp}}"
                             DisplayMemberPath="Name"
@@ -85,7 +85,7 @@
                         </Style>
  
                     </StackPanel.Resources>
-                    <Label Width="Auto" Content="Last Update: " Background="{StaticResource RowBrush}"></Label>
+                    <Label Width="Auto" Content="Time Since&#10;Last Update: " Background="{StaticResource RowBrush}"></Label>
                     <Label Content="LPH2: "></Label>
                     <Label Content="Detector Temp: " Background="{StaticResource RowBrush}"></Label>
                     <Label Content="Voltage: " ></Label>
@@ -109,7 +109,7 @@
                         </Style>
                     </StackPanel.Resources>
 
-                    <Label Content="{Binding TimeSinceLastUpdate}" Background="{StaticResource RowBrush}"></Label>
+                    <Label  Content="{Binding TimeSinceLastUpdate}" Background="{StaticResource RowBrush}"></Label>
                     <Label Content="{Binding LPH2}" ></Label>
                     <Label Content="{Binding DetectorTemp}" Background="{StaticResource RowBrush}"></Label>
                     <Label Content="{Binding Voltage}" ></Label>

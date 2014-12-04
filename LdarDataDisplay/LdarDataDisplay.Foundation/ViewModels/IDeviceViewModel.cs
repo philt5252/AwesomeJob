@@ -7,7 +7,7 @@ namespace LdarDataDisplay.Foundation.ViewModels
     public interface IDeviceViewModel : INotifyPropertyChanged
     {
         string Id { get; }
-        DateTime TimeSinceLastUpdate { get; }
+        string TimeSinceLastUpdate { get; }
         double LPH2 { get; }
         double DetectorTemp { get; }
         double Voltage { get; }

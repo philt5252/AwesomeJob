@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:regions="http://www.codeplex.com/CompositeWPF"
              mc:Ignorable="d" 
+            Title="LDAR Device Log"
              d:DesignHeight="300" d:DesignWidth="300">
     <Window.Resources>
         <LinearGradientBrush x:Key="BackgroundBrush">
@@ -16,11 +17,10 @@
             <RowDefinition Height="25"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Rectangle Fill="AntiqueWhite" MouseEnter="UIElement_OnMouseEnter" VerticalAlignment="Top" Height="5" ></Rectangle>
+        <Rectangle Fill="#FEFEFE" MouseEnter="UIElement_OnMouseEnter" VerticalAlignment="Top" Height="5" ></Rectangle>
         <Menu Name="mainMenu" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="25">
             <MenuItem Header="Configuration">
-                <MenuItem Header="Screen Layout" Command="{Binding ShowScreenLayoutCommand}"></MenuItem>
-                <MenuItem Header="Device Details"></MenuItem>
+                <MenuItem Header="Screen Configuration" Command="{Binding ShowScreenLayoutCommand}"></MenuItem>
             </MenuItem>
             <MenuItem Name="fullScreenMenuItem" Header="Full Screen" Click="MenuItem_OnClick"></MenuItem>
         </Menu>
