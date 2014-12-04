@@ -11,7 +11,7 @@
            >
     <UserControl.Resources>
         <LinearGradientBrush x:Key="HeaderBrush">
-            <GradientStop Color="#E5000000"></GradientStop>
+            <GradientStop Color="#E5424242"></GradientStop>
         </LinearGradientBrush>
         <LinearGradientBrush x:Key="RowBrush">
             <GradientStop Color="#4CBFBFBF"></GradientStop>
