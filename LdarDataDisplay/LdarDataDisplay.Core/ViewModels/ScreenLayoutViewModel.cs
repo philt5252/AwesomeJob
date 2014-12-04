@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Input;
 using LdarDataDisplay.Core.Models;
 using LdarDataDisplay.Foundation.Controllers;
@@ -15,6 +16,7 @@ namespace LdarDataDisplay.Core.ViewModels
         private readonly Dictionary<string, DeviceDataConfiguration> configs;
         private readonly IAppController appController;
 
+        public DeviceDataConfiguration[] AllConfigurations{get { return configs.Values.ToArray(); }}
         public DeviceDataConfiguration LPH2Configuration { get { return configs["LPH2"]; } }
 
         public ICommand SaveConfiguration { get; protected set; }
