@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
+using Excel;
 using LdarDataDisplay.Core.Models;
 using LdarDataDisplay.Foundation.DataAccess;
 using LdarDataDisplay.Foundation.Models;
@@ -18,6 +20,12 @@ namespace LdarDataDisplay.Core.DataAccess
 
             foreach (string filepath in Directory.EnumerateFiles(currentDataDirectory))
             {
+                FileStream stream = File.Open(filepath, FileMode.Open, FileAccess.Read);
+
+                IExcelDataReader excelReader = ExcelReaderFactory.CreateBinaryReader(stream);
+
+                DataSet result = excelReader.AsDataSet();
+
                 
             }
 
