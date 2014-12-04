@@ -23,6 +23,8 @@ namespace LdarDataDisplay.Core.Views
     public partial class MainWindow : Window, IWindow
     {
         private IRegionManager regionManager;
+        private bool isFullScreen = false;
+
         public MainWindow()
         {
             regionManager = ServiceLocator.Current.GetInstance<IRegionManager>();
@@ -33,9 +35,28 @@ namespace LdarDataDisplay.Core.Views
 
         private void MenuItem_OnClick(object sender, RoutedEventArgs e)
         {
-            WindowStyle= WindowStyle.None;
-            WindowState=WindowState.Maximized;
-            mainMenu.Visibility=Visibility.Hidden;
+            if (!isFullScreen)
+            {
+                WindowStyle = WindowStyle.None;
+                WindowState = WindowState.Maximized;
+                mainMenu.Visibility = Visibility.Hidden;
+                fullScreenMenuItem.Header = "Exit Full Screen";
+                isFullScreen = true;
+            }
+            else
+            {
+                WindowStyle = WindowStyle.SingleBorderWindow;
+                WindowState = WindowState.Normal;
+                mainMenu.Visibility = Visibility.Visible;
+                fullScreenMenuItem.Header = "Full Screen";
+                isFullScreen = false;
+            }
+            
+        }
+
+        private void UIElement_OnMouseEnter(object sender, MouseEventArgs e)
+        {
+            mainMenu.Visibility = Visibility.Visible;
         }
     }
 }

@@ -83,6 +83,7 @@
                             <Setter Property="FontSize" Value="15"></Setter>
                             <Setter Property="FontWeight" Value="DemiBold"></Setter>
                         </Style>
+ 
                     </StackPanel.Resources>
                     <Label Width="Auto" Content="Last Update: " Background="{StaticResource RowBrush}"></Label>
                     <Label Content="LPH2: "></Label>
@@ -109,7 +110,7 @@
                     </StackPanel.Resources>
 
                     <Label Content="{Binding TimeSinceLastUpdate}" Background="{StaticResource RowBrush}"></Label>
-                    <Label Content="{Binding LPH2}" Foreground="{Binding LPH2Color}" ></Label>
+                    <Label Content="{Binding LPH2}" ></Label>
                     <Label Content="{Binding DetectorTemp}" Background="{StaticResource RowBrush}"></Label>
                     <Label Content="{Binding Voltage}" ></Label>
                     <Label Content="{Binding H2Pressure}" Background="{StaticResource RowBrush}"></Label>

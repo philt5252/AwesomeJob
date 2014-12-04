@@ -16,12 +16,13 @@
             <RowDefinition Height="25"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
+        <Rectangle Fill="AntiqueWhite" MouseEnter="UIElement_OnMouseEnter" VerticalAlignment="Top" Height="5" ></Rectangle>
         <Menu Name="mainMenu" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="25">
             <MenuItem Header="Configuration">
                 <MenuItem Header="Screen Layout" Command="{Binding ShowScreenLayoutCommand}"></MenuItem>
                 <MenuItem Header="Device Details"></MenuItem>
             </MenuItem>
-            <MenuItem Header="Full Screen" Click="MenuItem_OnClick"></MenuItem>
+            <MenuItem Name="fullScreenMenuItem" Header="Full Screen" Click="MenuItem_OnClick"></MenuItem>
         </Menu>
         <Viewbox Grid.Row="1" Stretch="Uniform">
         <ItemsControl regions:RegionManager.RegionName="DeviceRegion" Margin="5,0,5,0">
