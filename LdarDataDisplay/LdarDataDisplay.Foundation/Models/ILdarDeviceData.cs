@@ -4,7 +4,7 @@ namespace LdarDataDisplay.Foundation.Models
 {
     public interface ILdarDeviceData
     {
-        int Id { get; set; }
+        string Id { get; set; }
         DateTime TimeSinceLastUpdate { get; set; }
         double LPH2 { get; set; }
         double DetectorTemp { get; set; }

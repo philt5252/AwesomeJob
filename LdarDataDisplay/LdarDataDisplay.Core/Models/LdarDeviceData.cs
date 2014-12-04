@@ -5,7 +5,7 @@ namespace LdarDataDisplay.Core.Models
 {
     public class LdarDeviceData : ILdarDeviceData
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public DateTime TimeSinceLastUpdate { get; set; }
         public double LPH2 { get; set; }
         public double DetectorTemp { get; set; }

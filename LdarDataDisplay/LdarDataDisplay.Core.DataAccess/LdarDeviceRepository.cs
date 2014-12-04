@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using LdarDataDisplay.Core.Models;
 using LdarDataDisplay.Foundation.DataAccess;
 using LdarDataDisplay.Foundation.Factories.Models;
@@ -31,7 +32,18 @@ namespace LdarDataDisplay.Core.DataAccess
 
             foreach (string filepath in Directory.EnumerateFiles(currentDataDirectory))
             {
+                FileInfo fileInfo = new FileInfo(filepath);
+
+                Match match = Regex.Match(fileInfo.Name, @".*-(\d*)_.*");
+
+                if (!match.Success)
+                    continue;
+
+                string id = match.Groups[1].Value;
+
                 ILdarDeviceData ldarDeviceData = ldarDeviceDataFactory.Create();
+                ldarDeviceData.Id = id;
+
                 data.Add(ldarDeviceData);
 
                 string[] dataLines = File.ReadAllLines(filepath);
@@ -41,9 +53,8 @@ namespace LdarDataDisplay.Core.DataAccess
 
                 bool foundCalibrationAge = false;
                 bool foundLastDrift = false;
-                bool currentDataSet = false;
+                bool isCurrentDataSet = false;
                 
-
                 for (int i = dataLines.Length-1; i >=0 && (!foundCalibrationAge || !foundLastDrift); i--)
                 {
                     string[] dataEntries = dataLines[i].Split(',');
@@ -51,22 +62,14 @@ namespace LdarDataDisplay.Core.DataAccess
                     if (dataEntries.Length < 10)
                         continue;
 
-                    if (!currentDataSet)
+                    if (!isCurrentDataSet)
                     {
-                        ldarDeviceData.TimeSinceLastUpdate =
-                        DateTime.Parse(dataEntries[Index('A')] + " " + dataEntries[Index('B')]);
+                        SetCurrentData(ldarDeviceData, dataEntries);
 
-                        ldarDeviceData.LPH2 = double.Parse(dataEntries[Index('H')]);
-                        ldarDeviceData.DetectorTemp = double.Parse(dataEntries[Index('J')]);
-                        ldarDeviceData.Voltage = double.Parse(dataEntries[Index('M')]);
-                        ldarDeviceData.H2Pressure = double.Parse(dataEntries[Index('N')]);
-                        ldarDeviceData.PPM = double.Parse(dataEntries[Index('S')]);
-                        ldarDeviceData.PumpPPL = double.Parse(dataEntries[Index('T')]);
-                        ldarDeviceData.LPH2 = double.Parse(dataEntries[Index('H')]);
-                        ldarDeviceData.LastDrift = DateTime.MinValue;
-                        ldarDeviceData.CalibrationAge = DateTime.MinValue;
+                        if (ldarDeviceData.IsFlameout)
+                            break;
 
-                        currentDataSet = true;
+                        isCurrentDataSet = true;
                     }
 
                     double ppm = double.Parse(dataEntries[Index('S')]);
@@ -101,6 +104,30 @@ namespace LdarDataDisplay.Core.DataAccess
             }
 
             return data.ToArray();
+        }
+
+        private void SetCurrentData(ILdarDeviceData ldarDeviceData, string[] dataEntries)
+        {
+            ldarDeviceData.TimeSinceLastUpdate =
+                DateTime.Parse(dataEntries[Index('A')] + " " + dataEntries[Index('B')]);
+
+            ldarDeviceData.LPH2 = double.Parse(dataEntries[Index('H')]);
+            ldarDeviceData.DetectorTemp = double.Parse(dataEntries[Index('J')]);
+            ldarDeviceData.Voltage = double.Parse(dataEntries[Index('M')]);
+            ldarDeviceData.H2Pressure = double.Parse(dataEntries[Index('N')]);
+            ldarDeviceData.PPM = double.Parse(dataEntries[Index('S')]);
+            ldarDeviceData.PumpPPL = double.Parse(dataEntries[Index('T')]);
+            ldarDeviceData.LPH2 = double.Parse(dataEntries[Index('H')]);
+            ldarDeviceData.LastDrift = DateTime.MinValue;
+            ldarDeviceData.CalibrationAge = DateTime.MinValue;
+
+            double q;
+            double r;
+
+            ldarDeviceData.IsFlameout =
+                !double.TryParse(dataEntries[Index('Q')], out q) ||
+                !double.TryParse(dataEntries[Index('R')], out r);
+
         }
 
         private int Index(char col)

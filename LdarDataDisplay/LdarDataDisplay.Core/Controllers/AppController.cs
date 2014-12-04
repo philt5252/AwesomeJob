@@ -53,8 +53,6 @@ namespace LdarDataDisplay.Core.Controllers
             dataRetrieverService.DataRetrieved += DataRetrieverServiceOnDataRetrieved;
             dataRetrieverService.Start();
 
-            
-
             IMainWindowViewModel mainWindowViewModel = mainWindowViewModelFactory.Create();
             IWindow mainWindow = mainWindowFactory.Create();
 
