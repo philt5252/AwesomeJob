@@ -49,6 +49,8 @@
     <Compile Include="Models\ILdarDeviceData.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\DataRetrievedEventArgs.cs" />
+    <Compile Include="Services\IDataRetrieverService.cs" />
     <Compile Include="ViewModels\IDeviceViewModel.cs" />
     <Compile Include="ViewModels\IMainWindowViewModel.cs" />
     <Compile Include="ViewModels\IScreenLayoutViewModel.cs" />

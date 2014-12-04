@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using LdarDataDisplay.Core.Models;
 using LdarDataDisplay.Foundation.DataAccess;
 using LdarDataDisplay.Foundation.Models;
@@ -11,7 +14,14 @@ namespace LdarDataDisplay.Core.DataAccess
         {
             List<ILdarDeviceData> data = new List<ILdarDeviceData>();
 
-            for (int i = 1; i <= 10; i++)
+            string currentDataDirectory = Directory.EnumerateDirectories(StaticData.LogsFolder).OrderByDescending(DateTime.Parse).First();
+
+            foreach (string filepath in Directory.EnumerateFiles(currentDataDirectory))
+            {
+                
+            }
+
+            for (int i = 1; i <= 6; i++)
             {
                 ILdarDeviceData newData = new LdarDeviceData();
 

@@ -18,7 +18,7 @@ namespace LdarDataDisplay.Core.Views
     /// <summary>
     /// Interaction logic for ScreenLayoutWindow.xaml
     /// </summary>
-    public partial class ScreenLayoutWindow : IWindow
+    public partial class ScreenLayoutWindow : Window, IWindow
     {
         public ScreenLayoutWindow()
         {

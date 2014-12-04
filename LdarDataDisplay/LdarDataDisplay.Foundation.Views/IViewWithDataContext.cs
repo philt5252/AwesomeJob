@@ -1,4 +1,6 @@
-﻿namespace LdarDataDisplay.Foundation.Views
+﻿using System;
+
+namespace LdarDataDisplay.Foundation.Views
 {
     public interface IViewWithDataContext
     {

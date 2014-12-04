@@ -14,7 +14,13 @@
             </MenuItem>
             <MenuItem Header="Full Screen" Click="MenuItem_OnClick"></MenuItem>
         </Menu>
-        <ItemsControl regions:RegionManager.RegionName="DeviceRegion"></ItemsControl>
+        <ItemsControl regions:RegionManager.RegionName="DeviceRegion" Margin="0,22,0,0">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="1" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
 
     </Grid>
 </Window>

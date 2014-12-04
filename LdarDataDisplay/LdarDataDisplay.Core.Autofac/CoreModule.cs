@@ -1,9 +1,11 @@
 ﻿using Autofac;
 using LdarDataDisplay.Core.Controllers;
 using LdarDataDisplay.Core.Factories.ViewModels;
+using LdarDataDisplay.Core.Services;
 using LdarDataDisplay.Core.ViewModels;
 using LdarDataDisplay.Foundation.Controllers;
 using LdarDataDisplay.Foundation.Factories.ViewModels;
+using LdarDataDisplay.Foundation.Services;
 using LdarDataDisplay.Foundation.ViewModels;
 
 namespace LdarDataDisplay.Core.Autofac
@@ -23,6 +25,8 @@ namespace LdarDataDisplay.Core.Autofac
             builder.RegisterType<MainWindowViewModel>().As<IMainWindowViewModel>();
             builder.RegisterType<ScreenLayoutViewModel>().As<IScreenLayoutViewModel>();
             builder.RegisterType<DeviceViewModel>().As<IDeviceViewModel>();
+
+            builder.RegisterType<DataRetrieverService>().As<IDataRetrieverService>().SingleInstance();
         }
     }
 }

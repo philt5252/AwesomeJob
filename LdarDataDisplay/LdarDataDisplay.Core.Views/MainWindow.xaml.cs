@@ -28,7 +28,6 @@ namespace LdarDataDisplay.Core.Views
             regionManager = ServiceLocator.Current.GetInstance<IRegionManager>();
             RegionManager.SetRegionManager(this, regionManager);
             
-
             InitializeComponent();
         }
 

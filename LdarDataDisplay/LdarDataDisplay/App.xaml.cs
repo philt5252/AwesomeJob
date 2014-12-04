@@ -49,8 +49,6 @@ namespace LdarDataDisplay
             ConfigureDefaultRegionBehaviors();
             ConfigureRegionAdapterMappings();
 
-           
-
             IAppController appController;
 
             using(var scope = container.BeginLifetimeScope())
@@ -68,6 +66,7 @@ namespace LdarDataDisplay
             if (regionAdapterMappings != null)
             {
                 regionAdapterMappings.RegisterMapping(typeof(Selector), container.Resolve<SelectorRegionAdapter>());
+                regionAdapterMappings.RegisterMapping(typeof(StackPanel), container.Resolve<ItemsControlRegionAdapter>());
                 regionAdapterMappings.RegisterMapping(typeof(ItemsControl), container.Resolve<ItemsControlRegionAdapter>());
                 regionAdapterMappings.RegisterMapping(typeof(ContentControl), container.Resolve<ContentControlRegionAdapter>());
                 //regionAdapterMappings.RegisterMapping(typeof(LayoutAnchorablePane), container.Resolve<LayoutAnchorablePaneRegionAdapter>());
