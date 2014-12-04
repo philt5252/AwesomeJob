@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Media;
 
 namespace LdarDataDisplay.Foundation.Models
 {
+    [Serializable]
     public class DeviceDataConfiguration
     {
         public string DataName { get; set; }
