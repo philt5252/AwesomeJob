@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AppController.cs" />
+    <Compile Include="Factories\Models\LdarDeviceDataFactory.cs" />
     <Compile Include="Factories\ViewModels\DeviceViewModelFactory.cs" />
     <Compile Include="Factories\ViewModels\MainWindowViewModelFactory.cs" />
     <Compile Include="Factories\ViewModels\ScreenLayoutViewModelFactory.cs" />

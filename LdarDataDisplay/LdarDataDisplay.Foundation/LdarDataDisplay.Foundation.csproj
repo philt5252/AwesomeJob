@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\IAppController.cs" />
+    <Compile Include="Factories\Models\ILdarDeviceDataFactory.cs" />
     <Compile Include="Factories\ViewModels\IDeviceViewModelFactory.cs" />
     <Compile Include="Factories\ViewModels\IMainWindowViewModelFactory.cs" />
     <Compile Include="Factories\ViewModels\IScreenLayoutViewModelFactory.cs" />
