@@ -56,7 +56,7 @@ namespace LdarDataDisplay.Core.Services
             {
                 FileInfo file = new FileInfo(filePath);
 
-                File.Copy(filePath, Path.Combine(folder, file.Name));
+                File.Copy(filePath, Path.Combine(folder, file.Name), true);
             }
 
             ILdarDeviceData[] ldarDeviceDatas = repository.RetrieveData();
