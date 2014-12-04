@@ -36,11 +36,96 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
             </Expander>
-            <Expander Header="Detector Temp"></Expander>
-            <Expander Header="Voltage"></Expander>
-            <Expander Header="H2Pressure"></Expander>
-            <Expander Header="PPM"></Expander>
-            <Expander Header="Pump PPL"></Expander>
+            <Expander Header="Detector Temp" DataContext="{Binding DetectorTempConfiguration}">
+                <ListBox  BorderThickness="0" Margin="0" Padding="0" ItemsSource="{Binding DeviceDataRanges}" HorizontalAlignment="Left">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel.Resources>
+                                    <SolidColorBrush x:Key="myBrush" Color="{Binding Color}"></SolidColorBrush>
+                                </StackPanel.Resources>
+                                <Rectangle Height ="30" Width="50" Margin="0,0,10,0" Fill="{StaticResource myBrush}"></Rectangle>
+                                <Label Content="Min: " Margin="0,0,5,0"></Label>
+                                <TextBox Text="{Binding Min}" Width="60" Margin="0,0,10,0"></TextBox>
+                                <Label Content="Max: " Margin="0,0,5,0"></Label>
+                                <TextBox Text="{Binding Max}" Width="60" Margin="0,0,5,0"></TextBox>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Expander>
+            <Expander Header="Voltage" DataContext="{Binding VoltageConfiguration}">
+                <ListBox  BorderThickness="0" Margin="0" Padding="0" ItemsSource="{Binding DeviceDataRanges}" HorizontalAlignment="Left">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel.Resources>
+                                    <SolidColorBrush x:Key="myBrush" Color="{Binding Color}"></SolidColorBrush>
+                                </StackPanel.Resources>
+                                <Rectangle Height ="30" Width="50" Margin="0,0,10,0" Fill="{StaticResource myBrush}"></Rectangle>
+                                <Label Content="Min: " Margin="0,0,5,0"></Label>
+                                <TextBox Text="{Binding Min}" Width="60" Margin="0,0,10,0"></TextBox>
+                                <Label Content="Max: " Margin="0,0,5,0"></Label>
+                                <TextBox Text="{Binding Max}" Width="60" Margin="0,0,5,0"></TextBox>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Expander>
+            <Expander Header="H2Pressure" DataContext="{Binding H2PressureConfiguration}">
+                <ListBox  BorderThickness="0" Margin="0" Padding="0" ItemsSource="{Binding DeviceDataRanges}" HorizontalAlignment="Left">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel.Resources>
+                                    <SolidColorBrush x:Key="myBrush" Color="{Binding Color}"></SolidColorBrush>
+                                </StackPanel.Resources>
+                                <Rectangle Height ="30" Width="50" Margin="0,0,10,0" Fill="{StaticResource myBrush}"></Rectangle>
+                                <Label Content="Min: " Margin="0,0,5,0"></Label>
+                                <TextBox Text="{Binding Min}" Width="60" Margin="0,0,10,0"></TextBox>
+                                <Label Content="Max: " Margin="0,0,5,0"></Label>
+                                <TextBox Text="{Binding Max}" Width="60" Margin="0,0,5,0"></TextBox>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Expander>
+            <Expander Header="PPM" DataContext="{Binding PPMConfiguration}">
+                <ListBox  BorderThickness="0" Margin="0" Padding="0" ItemsSource="{Binding DeviceDataRanges}" HorizontalAlignment="Left">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel.Resources>
+                                    <SolidColorBrush x:Key="myBrush" Color="{Binding Color}"></SolidColorBrush>
+                                </StackPanel.Resources>
+                                <Rectangle Height ="30" Width="50" Margin="0,0,10,0" Fill="{StaticResource myBrush}"></Rectangle>
+                                <Label Content="Min: " Margin="0,0,5,0"></Label>
+                                <TextBox Text="{Binding Min}" Width="60" Margin="0,0,10,0"></TextBox>
+                                <Label Content="Max: " Margin="0,0,5,0"></Label>
+                                <TextBox Text="{Binding Max}" Width="60" Margin="0,0,5,0"></TextBox>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Expander>
+            <Expander Header="Pump PPL" DataContext="{Binding PumpPPLConfiguration}">
+                <ListBox  BorderThickness="0" Margin="0" Padding="0" ItemsSource="{Binding DeviceDataRanges}" HorizontalAlignment="Left">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel.Resources>
+                                    <SolidColorBrush x:Key="myBrush" Color="{Binding Color}"></SolidColorBrush>
+                                </StackPanel.Resources>
+                                <Rectangle Height ="30" Width="50" Margin="0,0,10,0" Fill="{StaticResource myBrush}"></Rectangle>
+                                <Label Content="Min: " Margin="0,0,5,0"></Label>
+                                <TextBox Text="{Binding Min}" Width="60" Margin="0,0,10,0"></TextBox>
+                                <Label Content="Max: " Margin="0,0,5,0"></Label>
+                                <TextBox Text="{Binding Max}" Width="60" Margin="0,0,5,0"></TextBox>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Expander>
         </StackPanel>
         <Button Content="Save" Grid.Row="2" Height="25" Command="{Binding SaveConfigurationCommand}" Margin="301,5,22,10"/>
     </Grid>

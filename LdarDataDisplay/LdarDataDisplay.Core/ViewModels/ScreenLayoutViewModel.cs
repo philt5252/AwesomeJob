@@ -18,6 +18,11 @@ namespace LdarDataDisplay.Core.ViewModels
 
         public DeviceDataConfiguration[] AllConfigurations{get { return configs.Values.ToArray(); }}
         public DeviceDataConfiguration LPH2Configuration { get { return configs["LPH2"]; } }
+        public DeviceDataConfiguration DetectorTempConfiguration { get { return configs["DetectorTemp"]; } }
+        public DeviceDataConfiguration VoltageConfiguration { get { return configs["Voltage"]; } }
+        public DeviceDataConfiguration H2PressureConfiguration { get { return configs["H2Pressure"]; } }
+        public DeviceDataConfiguration PPMConfiguration { get { return configs["PPM"]; } }
+        public DeviceDataConfiguration PumpPPLConfiguration { get { return configs["PumpPPL"]; } }
 
         public ICommand SaveConfigurationCommand { get; protected set; }
 
