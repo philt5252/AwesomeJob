@@ -5,46 +5,100 @@ using System.IO;
 using System.Linq;
 using LdarDataDisplay.Core.Models;
 using LdarDataDisplay.Foundation.DataAccess;
+using LdarDataDisplay.Foundation.Factories.Models;
 using LdarDataDisplay.Foundation.Models;
 
 namespace LdarDataDisplay.Core.DataAccess
 {
     public class LdarDeviceRepository : ILdarDeviceRepository
     {
+        private readonly ILdarDeviceDataFactory ldarDeviceDataFactory;
+
+        public LdarDeviceRepository(ILdarDeviceDataFactory ldarDeviceDataFactory)
+        {
+            this.ldarDeviceDataFactory = ldarDeviceDataFactory;
+        }
+
         public ILdarDeviceData[] RetrieveData()
         {
             List<ILdarDeviceData> data = new List<ILdarDeviceData>();
 
-            string currentDataDirectory = Directory.EnumerateDirectories(StaticData.LogsFolder).OrderByDescending(DateTime.Parse).First();
+            string currentDataDirectory = Directory.EnumerateDirectories(StaticData.LogsFolder)
+                .OrderByDescending(d => DateTime.Parse(new DirectoryInfo(d).Name)).FirstOrDefault();
+
+            if(currentDataDirectory == null)
+                return new ILdarDeviceData[0];
 
             foreach (string filepath in Directory.EnumerateFiles(currentDataDirectory))
             {
-                FileStream stream = File.Open(filepath, FileMode.Open, FileAccess.Read);
+                ILdarDeviceData ldarDeviceData = ldarDeviceDataFactory.Create();
+                data.Add(ldarDeviceData);
 
-                IExcelDataReader excelReader = ExcelReaderFactory.CreateBinaryReader(stream);
+                string[] dataLines = File.ReadAllLines(filepath);
+                int numConsecutiveZeros = 0;
 
-                DataSet result = excelReader.AsDataSet();
+                bool foundCalibrationAge = false;
+                bool foundLastDrift = false;
 
-                
-            }
+                string[] currentDataEntries = dataLines[dataLines.Length-1].Split(',');
 
-            for (int i = 1; i <= 6; i++)
-            {
-                ILdarDeviceData newData = new LdarDeviceData();
+                ldarDeviceData.TimeSinceLastUpdate =
+                        DateTime.Parse(currentDataEntries[Index('A')] + " " + currentDataEntries[Index('B')]);
 
-                newData.CalibrationAge = i;
-                newData.DetectorTemp = i*100;
-                newData.H2Pressure = i + 5;
-                newData.Id = i;
-                newData.IsFlameout = false;
-                newData.LastDrift = i*1000 + 5;
-                newData.Lph2 = i*100 + i*10;
-                newData.PPM = i*100 + i*10 + i;
+                ldarDeviceData.LPH2 = double.Parse(currentDataEntries[Index('H')]);
+                ldarDeviceData.DetectorTemp = double.Parse(currentDataEntries[Index('J')]);
+                ldarDeviceData.Voltage = double.Parse(currentDataEntries[Index('M')]);
+                ldarDeviceData.H2Pressure = double.Parse(currentDataEntries[Index('N')]);
+                ldarDeviceData.PPM = double.Parse(currentDataEntries[Index('S')]);
+                ldarDeviceData.PumpPPL = double.Parse(currentDataEntries[Index('T')]);
+                ldarDeviceData.LPH2 = double.Parse(currentDataEntries[Index('H')]);
+                ldarDeviceData.LastDrift = DateTime.MinValue;
+                ldarDeviceData.CalibrationAge = DateTime.MinValue;
 
-                data.Add(newData);
+                for (int i = dataLines.Length-2; i >=0 || (!foundCalibrationAge || !foundLastDrift); i--)
+                {
+                    string[] dataEntries = dataLines[i].Split(',');
+
+                    if (dataEntries.Length < 10)
+                        continue;
+
+                    double ppm = double.Parse(dataEntries[Index('S')]);
+
+                    if (!foundCalibrationAge && ppm == 0.0)
+                    {
+                        numConsecutiveZeros++;
+
+                        if (numConsecutiveZeros >= 5)
+                        {
+                            ldarDeviceData.CalibrationAge =
+                                DateTime.Parse(dataEntries[Index('A')] + " " + dataEntries[Index('B')]);
+                            
+                            foundCalibrationAge = true;
+                        }
+
+                        continue;
+                    }
+                    
+                    numConsecutiveZeros = 0;
+
+                    if (!foundLastDrift && ppm > 1000)
+                    {
+                        ldarDeviceData.LastDrift =
+                            DateTime.Parse(dataEntries[Index('A')] + " " + dataEntries[Index('B')]);
+
+                        foundLastDrift = true;
+                    }
+                }
             }
 
             return data.ToArray();
+        }
+
+        private int Index(char col)
+        {
+            col = char.ToUpper(col);
+
+            return col - 'A';
         }
     }
 }
