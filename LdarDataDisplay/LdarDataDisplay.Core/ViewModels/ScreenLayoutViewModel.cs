@@ -19,7 +19,7 @@ namespace LdarDataDisplay.Core.ViewModels
         public DeviceDataConfiguration[] AllConfigurations{get { return configs.Values.ToArray(); }}
         public DeviceDataConfiguration LPH2Configuration { get { return configs["LPH2"]; } }
 
-        public ICommand SaveConfiguration { get; protected set; }
+        public ICommand SaveConfigurationCommand { get; protected set; }
 
         public ScreenLayoutViewModel(Dictionary<string, DeviceDataConfiguration> configs,
             IAppController appController)
@@ -27,7 +27,7 @@ namespace LdarDataDisplay.Core.ViewModels
             this.configs = configs;
             this.appController = appController;
 
-            SaveConfiguration = new DelegateCommand(ExecuteSaveConfiguration);
+            SaveConfigurationCommand = new DelegateCommand(ExecuteSaveConfiguration);
         }
 
         private void ExecuteSaveConfiguration()

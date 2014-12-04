@@ -8,6 +8,6 @@ namespace LdarDataDisplay.Foundation.ViewModels
     {
         DeviceDataConfiguration[] AllConfigurations { get; }
         DeviceDataConfiguration LPH2Configuration { get; }
-        ICommand SaveConfiguration { get; }
+        ICommand SaveConfigurationCommand { get; }
     }
 }
