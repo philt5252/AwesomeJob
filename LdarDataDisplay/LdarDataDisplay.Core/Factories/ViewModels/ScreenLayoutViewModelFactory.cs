@@ -8,16 +8,16 @@ namespace LdarDataDisplay.Core.Factories.ViewModels
 {
     public class ScreenLayoutViewModelFactory : IScreenLayoutViewModelFactory
     {
-        private readonly Func<IScreenLayoutViewModel> createViewModelFunc;
+        private readonly Func<Dictionary<string, DeviceDataConfiguration>, IScreenLayoutViewModel> createViewModelFunc;
 
-        public ScreenLayoutViewModelFactory(Func<IScreenLayoutViewModel> createViewModelFunc )
+        public ScreenLayoutViewModelFactory(Func<Dictionary<string, DeviceDataConfiguration>, IScreenLayoutViewModel> createViewModelFunc )
         {
             this.createViewModelFunc = createViewModelFunc;
         }
 
         public IScreenLayoutViewModel Create(Dictionary<string, DeviceDataConfiguration> deviceDataConfigurations)
         {
-            return createViewModelFunc();
+            return createViewModelFunc(deviceDataConfigurations);
         }
     }
 }

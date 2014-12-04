@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Windows.Media;
 using LdarDataDisplay.Foundation.Models;
 using LdarDataDisplay.Foundation.ViewModels;
 
@@ -7,6 +9,7 @@ namespace LdarDataDisplay.Core.ViewModels
     public class DeviceViewModel : ViewModel, IDeviceViewModel
     {
         private ILdarDeviceData deviceData;
+        private readonly Dictionary<string, DeviceDataConfiguration> configs;
 
         public string Id
         {
@@ -63,9 +66,40 @@ namespace LdarDataDisplay.Core.ViewModels
             get { return deviceData.IsFlameout; }
         }
 
-        public DeviceViewModel(ILdarDeviceData deviceData)
+        public Color LPH2Color
+        {
+            get { return configs["LPH2"].GetColor(LPH2); }
+        }
+
+        public Color DetectorTempColor
+        {
+            get { return configs["DetectorTemp"].GetColor(DetectorTemp); }
+        }
+
+        public Color VoltageColor
+        {
+            get { return configs["Voltage"].GetColor(Voltage); }
+        }
+
+        public Color H2PressureColor
+        {
+            get { return configs["H2Pressure"].GetColor(H2Pressure); }
+        }
+
+        public Color PPMColor
+        {
+            get { return configs["PPM"].GetColor(PPM); }
+        }
+
+        public Color PumpPPLColor
+        {
+            get { return configs["PumpPPL"].GetColor(PumpPPL); }
+        }
+
+        public DeviceViewModel(ILdarDeviceData deviceData, Dictionary<string, DeviceDataConfiguration> configs )
         {
             this.deviceData = deviceData;
+            this.configs = configs;
         }
     }
 }

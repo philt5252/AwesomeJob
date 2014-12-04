@@ -29,7 +29,11 @@ namespace LdarDataDisplay.Core.DataAccess
 
             if (!File.Exists(filePath))
             {
-                string[] properties = new[] {"LPH2"};
+                string[] properties = new[]
+                {
+                    "LPH2", "DetectorTemp", "Voltage",
+                    "H2Pressure", "PPM", "PumpPPL"
+                };
 
                 foreach (var property in properties)
                 {

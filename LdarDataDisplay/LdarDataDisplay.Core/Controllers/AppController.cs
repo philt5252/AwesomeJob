@@ -29,6 +29,8 @@ namespace LdarDataDisplay.Core.Controllers
         private readonly IRegionManager regionManager;
         private IWindow configurationWindow;
         private IScreenLayoutViewModel screenLayoutViewModel;
+        private IDeviceViewModel[] deviceViewModels;
+        private IEnumerable<ILdarDeviceData> data;
 
         public AppController(IMainWindowFactory mainWindowFactory,
             IScreenLayoutWindowFactory screenLayoutWindowFactory,
@@ -77,10 +79,19 @@ namespace LdarDataDisplay.Core.Controllers
 
         }
 
+        private void RefreshDeviceScreens()
+        {
+            RefreshDeviceScreens(data);
+        }
+
         private void RefreshDeviceScreens(IEnumerable<ILdarDeviceData> data)
         {
-            IDeviceViewModel[] deviceViewModels = data.Select(d => deviceViewModelFactory.Create(d)).ToArray();
+            this.data = data;
+            Dictionary<string, DeviceDataConfiguration> deviceDataConfigurations = configurationRepository.Open();
 
+            deviceViewModels = data.Select(d => deviceViewModelFactory.Create(d, deviceDataConfigurations)).ToArray();
+
+            
             IViewWithDataContext[] deviceViews = deviceViewModels.Select(d =>
             {
                 IViewWithDataContext deviceView = deviceViewFactory.Create();
@@ -116,6 +127,9 @@ namespace LdarDataDisplay.Core.Controllers
         public void SaveAndCloseConfiguration()
         {
             configurationRepository.Save(screenLayoutViewModel.AllConfigurations);
+
+            RefreshDeviceScreens();
+
             configurationWindow.Close();
         }
     }
