@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
-using Excel;
 using LdarDataDisplay.Core.Models;
 using LdarDataDisplay.Foundation.DataAccess;
 using LdarDataDisplay.Foundation.Models;
