@@ -14,8 +14,8 @@ namespace LdarDataDisplay.Foundation.ViewModels
         double H2Pressure { get; }
         double PPM { get; }
         double PumpPPL { get; }
-        DateTime CalibrationAge { get; }
-        DateTime LastDrift { get; }
+        string CalibrationAge { get; }
+        string LastDrift { get; }
 
         Color LPH2Color { get; }
         Color DetectorTempColor { get; }
