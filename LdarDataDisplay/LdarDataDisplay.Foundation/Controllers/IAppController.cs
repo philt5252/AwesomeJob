@@ -4,5 +4,6 @@
     {
         void Home();
         void ShowScreenLaout();
+        void SaveAndCloseConfiguration();
     }
 }
